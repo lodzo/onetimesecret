@@ -29,14 +29,14 @@
 #     -e ONETIMESECRET_SECRET="<put your own secret here>" \
 #     onetimesecret
 
-FROM ruby:2.6
+FROM ruby:2.7
 
 WORKDIR /usr/src/app
 COPY Gemfile ./
 
-RUN gem update --system 3.2.3 && \
-    gem install bundler -v 2.4.6 && \
-    bundler version
+# RUN gem update --system 3.2.3 && \
+#     gem install bundler -v 2.4.6 && \
+#     bundler version
 
 RUN bundle install
 COPY . .
