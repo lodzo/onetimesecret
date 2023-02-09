@@ -34,6 +34,10 @@ FROM ruby:2.6
 WORKDIR /usr/src/app
 COPY Gemfile ./
 
+RUN gem update --system 3.2.3 && \
+    gem install bundler -v 2.4.6 && \
+    bundler version
+
 RUN bundle install
 COPY . .
 CMD ["bundle", "exec", "thin", "-R", "config.ru", "start"]
